@@ -1,0 +1,73 @@
+{
+  "name": "@jeremyling/react-material-ui-horizontal-scroll-list",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "NODE_ENV=production && rm -rf dist && mkdir dist && npx babel src --out-dir dist --copy-files",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "description": "A customizable horizontal scroll list using React Material UI components.",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "babel": {
+    "presets": [
+      "react",
+      "env",
+      "stage-2"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jzcling/react-material-ui-horizontal-scroll-list.git"
+  },
+  "keywords": [
+    "form",
+    "builder",
+    "form builder",
+    "material ui",
+    "react"
+  ],
+  "author": "Jeremy Ling",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jzcling/react-material-ui-horizontal-scroll-list/issues"
+  },
+  "homepage": "https://github.com/jzcling/react-material-ui-horizontal-scroll-list#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "^4.0.3"
+  },
+  "peerDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "lodash": "^4.17.21"
+  }
+}
