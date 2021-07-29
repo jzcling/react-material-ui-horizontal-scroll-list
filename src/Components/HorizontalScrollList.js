@@ -123,14 +123,6 @@ const useStyles = makeStyles((theme) => ({
       marginRight: theme.spacing(1),
     },
   },
-  itemContainer: {
-    height: "100%",
-  },
-  image: {
-    height: "100%",
-    width: "100%",
-    objectFit: "cover",
-  },
 }));
 
 function getDimension(dim, breakpoint = "md", allowance = 0) {
@@ -220,46 +212,43 @@ export default function HorizontalScrollList(props) {
           >
             {[...Array(rows).keys()].map((row) => (
               <Grid item key={row}>
-                {items[index + row] && (
-                  <ImageListItem
-                    classes={{
-                      root: classes.gridListTile,
-                      item: classes.gridListTileContent,
-                    }}
-                    onClick={(event) => handleTileClick(items[index + row])}
-                  >
-                    {component ? (
-                      component(items[index + row])
-                    ) : (
-                      <div className={classes.itemContainer}>
-                        <img
-                          src={
-                            _.get(items[index + row], imageUrlAttribute) ||
-                            "https://via.placeholder.com/360/ffffff/808080?text=" +
-                              encodeURIComponent(
-                                _.get(items[index + row], titleAttribute)
-                              )
-                          }
-                          alt={
-                            imageAltAttribute
-                              ? _.get(items[index + row], imageAltAttribute)
-                              : _.get(items[index + row], titleAttribute)
-                          }
-                          loading="lazy"
-                          className={classes.image}
-                        />
-                        <ImageListItemBar
-                          title={_.get(items[index + row], titleAttribute)}
-                          classes={{
-                            root: classes.gridListTileBarRoot,
-                            title: classes.gridListTileBarTitle,
-                            titleWrap: classes.gridListTileBarTitleWrap,
-                          }}
-                        />
-                      </div>
-                    )}
-                  </ImageListItem>
-                )}
+                {items[index + row] &&
+                  (component ? (
+                    component(items[index + row])
+                  ) : (
+                    <ImageListItem
+                      classes={{
+                        root: classes.gridListTile,
+                        item: classes.gridListTileContent,
+                      }}
+                      onClick={(event) => handleTileClick(items[index + row])}
+                    >
+                      <img
+                        src={
+                          _.get(items[index + row], imageUrlAttribute) ||
+                          "https://via.placeholder.com/360/ffffff/808080?text=" +
+                            encodeURIComponent(
+                              _.get(items[index + row], titleAttribute)
+                            )
+                        }
+                        alt={
+                          imageAltAttribute
+                            ? _.get(items[index + row], imageAltAttribute)
+                            : _.get(items[index + row], titleAttribute)
+                        }
+                        loading="lazy"
+                      />
+                      <ImageListItemBar
+                        title={_.get(items[index + row], titleAttribute)}
+                        classes={{
+                          root: classes.gridListTileBarRoot,
+                          title: classes.gridListTileBarTitle,
+                          titleWrap: classes.gridListTileBarTitleWrap,
+                        }}
+                      />
+                      )
+                    </ImageListItem>
+                  ))}
               </Grid>
             ))}
           </Grid>
