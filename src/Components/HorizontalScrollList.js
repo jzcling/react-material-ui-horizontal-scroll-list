@@ -10,6 +10,8 @@ import React, { useMemo, useState } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import HorizontalScrollIndicators from "./HorizontalScrollIndicators";
+import { Link } from "react-router-dom";
+import Tile from "./Tile";
 
 const useStyles = makeStyles((theme) => ({
   gridListRoot: {
@@ -123,6 +125,11 @@ const useStyles = makeStyles((theme) => ({
       marginRight: theme.spacing(1),
     },
   },
+
+  link: {
+    textDecoration: "none",
+    color: "rgba(0, 0, 0, 0.87)",
+  },
 }));
 
 function getDimension(dim, breakpoint = "md", allowance = 0) {
@@ -153,6 +160,7 @@ export default function HorizontalScrollList(props) {
     imageAltAttribute,
     titleAttribute,
     handleTileClick,
+    tileLink,
     tileWidth,
     tileHeight,
     heightAllowance,
@@ -216,38 +224,16 @@ export default function HorizontalScrollList(props) {
                   (component ? (
                     component(items[index + row])
                   ) : (
-                    <ImageListItem
-                      classes={{
-                        root: classes.gridListTile,
-                        item: classes.gridListTileContent,
-                      }}
-                      onClick={(event) => handleTileClick(items[index + row])}
-                    >
-                      <img
-                        src={
-                          _.get(items[index + row], imageUrlAttribute) ||
-                          "https://via.placeholder.com/360/ffffff/808080?text=" +
-                            encodeURIComponent(
-                              _.get(items[index + row], titleAttribute)
-                            )
-                        }
-                        alt={
-                          imageAltAttribute
-                            ? _.get(items[index + row], imageAltAttribute)
-                            : _.get(items[index + row], titleAttribute)
-                        }
-                        loading="lazy"
-                      />
-                      <ImageListItemBar
-                        title={_.get(items[index + row], titleAttribute)}
-                        classes={{
-                          root: classes.gridListTileBarRoot,
-                          title: classes.gridListTileBarTitle,
-                          titleWrap: classes.gridListTileBarTitleWrap,
-                        }}
-                      />
-                      )
-                    </ImageListItem>
+                    <Tile
+                      item={items[index + row]}
+                      imageUrlAttribute={imageUrlAttribute}
+                      imageAltAttribute={imageAltAttribute}
+                      titleAttribute={titleAttribute}
+                      handleTileClick={handleTileClick}
+                      tileLink={tileLink}
+                      tileWidth={tileWidth}
+                      tileHeight={tileHeight}
+                    />
                   ))}
               </Grid>
             ))}
@@ -267,7 +253,7 @@ export default function HorizontalScrollList(props) {
 
 HorizontalScrollList.defaultProps = {
   rows: 1,
-  handleTileClick: () => {},
+  handleTileClick: (item) => {},
   tileWidth: {
     xs: 90,
     sm: 120,
@@ -289,6 +275,7 @@ HorizontalScrollList.propTypes = {
   imageAltAttribute: PropTypes.string,
   titleAttribute: PropTypes.string.isRequired,
   handleTileClick: PropTypes.func,
+  tileLink: PropTypes.func,
   tileWidth: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
   tileHeight: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
   heightAllowance: PropTypes.number,

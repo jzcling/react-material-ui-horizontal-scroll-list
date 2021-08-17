@@ -115,19 +115,20 @@ export default function HorizontalProductList(props) {
 
 ## Props
 
-| Prop               | Type                 | Default                        | Description                                                                         |
-| ------------------ | -------------------- | ------------------------------ | ----------------------------------------------------------------------------------- |
-| items              | `array`              | required                       | Content data                                                                        |
-| rows               | `number`             | `1`                            | Number of rows in list                                                              |
-| imageUrlAttribute^ | `string`             | `undefined`                    | Attribute used to determine img src for default component                           |
-| imageAltAttribute^ | `string`             | `undefined`                    | Attribute used to determine img alt for default component                           |
-| titleAttribute^    | `string`             | `undefined`                    | Attribute used to determine text for default component                              |
-| handleTileClick^   | `func`               | `() => {}`                     | Method to handle individual tile click event                                        |
-| tileWidth          | `object` or `number` | `{ xs: 90, sm: 120, md: 180 }` | Width of individual tile. Can be a number or an object with values for breakpoints  |
-| tileHeight         | `object` or `number` | `{ xs: 90, sm: 120, md: 180 }` | Height of individual tile. Can be a number or an object with values for breakpoints |
-| heightAllowance    | `number`             | `10`                           | Height allowance to adjust container height for scrollbar, margin, etc.             |
-| component          | `func`               | `undefined`                    | Custom component for list content                                                   |
-| showIndicators     | `bool`               | `true`                         | Whether to show scroll indicators                                                   |
-| style              | `object`             | `undefined`                    | Style to apply to root container                                                    |
+| Prop               | Type                 | Default                        | Description                                                                          |
+| ------------------ | -------------------- | ------------------------------ | ------------------------------------------------------------------------------------ |
+| items              | `array`              | required                       | Content data                                                                         |
+| rows               | `number`             | `1`                            | Number of rows in list                                                               |
+| imageUrlAttribute^ | `string`             | `undefined`                    | Attribute used to determine img src for default component                            |
+| imageAltAttribute^ | `string`             | `undefined`                    | Attribute used to determine img alt for default component                            |
+| titleAttribute^    | `string`             | `undefined`                    | Attribute used to determine text for default component                               |
+| handleTileClick^   | `func`               | `(item) => {}`                 | Method to handle individual tile click event                                         |
+| tileLink^          | `func`               | `undefined`                    | Link to route to using React Router. By default, item is passed as the only argument |
+| tileWidth          | `object` or `number` | `{ xs: 90, sm: 120, md: 180 }` | Width of individual tile. Can be a number or an object with values for breakpoints   |
+| tileHeight         | `object` or `number` | `{ xs: 90, sm: 120, md: 180 }` | Height of individual tile. Can be a number or an object with values for breakpoints  |
+| heightAllowance    | `number`             | `10`                           | Height allowance to adjust container height for scrollbar, margin, etc.              |
+| component          | `func`               | `undefined`                    | Custom component for list content                                                    |
+| showIndicators     | `bool`               | `true`                         | Whether to show scroll indicators                                                    |
+| style              | `object`             | `undefined`                    | Style to apply to root container                                                     |
 
-^ Only required if using the default component
+^ Only applicable if using the default component
