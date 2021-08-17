@@ -1,16 +1,7 @@
-import {
-  debounce,
-  Grid,
-  ImageList,
-  ImageListItem,
-  ImageListItemBar,
-  makeStyles,
-} from "@material-ui/core";
+import { debounce, Grid, ImageList, makeStyles } from "@material-ui/core";
 import React, { useMemo, useState } from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import HorizontalScrollIndicators from "./HorizontalScrollIndicators";
-import { Link } from "react-router-dom";
 import Tile from "./Tile";
 
 const useStyles = makeStyles((theme) => ({
@@ -73,62 +64,6 @@ const useStyles = makeStyles((theme) => ({
           getDimension(tileHeight, "xs", heightAllowance) * rows
         }px !important`,
     },
-  },
-  gridListTile: {
-    width: ({ tileWidth }) => `${getDimension(tileWidth)}px !important`,
-    height: ({ tileHeight }) => `${getDimension(tileHeight)}px !important`,
-    [theme.breakpoints.only("xl")]: {
-      width: ({ tileWidth }) => `${getDimension(tileWidth, "xl")}px !important`,
-      height: ({ tileHeight }) =>
-        `${getDimension(tileHeight, "xl")}px !important`,
-    },
-    [theme.breakpoints.only("lg")]: {
-      width: ({ tileWidth }) => `${getDimension(tileWidth, "lg")}px !important`,
-      height: ({ tileHeight }) =>
-        `${getDimension(tileHeight, "lg")}px !important`,
-    },
-    [theme.breakpoints.only("sm")]: {
-      width: ({ tileWidth }) => `${getDimension(tileWidth, "sm")}px !important`,
-      height: ({ tileHeight }) =>
-        `${getDimension(tileHeight, "sm")}px !important`,
-    },
-    [theme.breakpoints.only("xs")]: {
-      width: ({ tileWidth }) => `${getDimension(tileWidth, "xs")}px !important`,
-      height: ({ tileHeight }) =>
-        `${getDimension(tileHeight, "xs")}px !important`,
-    },
-  },
-  gridListTileContent: {
-    borderRadius: "10px",
-  },
-  gridListTileBarRoot: {
-    [theme.breakpoints.down("xs")]: {
-      height: "2rem",
-    },
-  },
-  gridListTileBarTitle: {
-    fontSize: "0.8rem",
-    lineHeight: "1.1rem",
-    whiteSpace: "normal",
-    display: "-webkit-box",
-    boxOrient: "vertical",
-    lineClamp: 2,
-
-    [theme.breakpoints.down("xs")]: {
-      fontSize: "0.6rem",
-      lineHeight: "0.8rem",
-    },
-  },
-  gridListTileBarTitleWrap: {
-    [theme.breakpoints.down("sm")]: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-    },
-  },
-
-  link: {
-    textDecoration: "none",
-    color: "rgba(0, 0, 0, 0.87)",
   },
 }));
 
