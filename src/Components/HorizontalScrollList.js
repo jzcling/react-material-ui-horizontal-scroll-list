@@ -1,5 +1,5 @@
 import { debounce, Grid, ImageList, makeStyles } from "@material-ui/core";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import HorizontalScrollIndicators from "./HorizontalScrollIndicators";
 import Tile from "./Tile";
@@ -110,6 +110,8 @@ export default function HorizontalScrollList(props) {
     heightAllowance: heightAllowance,
   });
 
+  const listRef = useRef();
+
   const [showScrollIndicatorLeft, setShowScrollIndicatorLeft] = useState(false);
   const [showScrollIndicatorRight, setShowScrollIndicatorRight] =
     useState(true);
@@ -124,9 +126,23 @@ export default function HorizontalScrollList(props) {
     return indexes;
   }, [items, rows]);
 
+  const handleIndicatorClick = (direction) => (event) => {
+    const el = listRef.current;
+    const scrollMax = el.scrollWidth;
+    el.scrollTo({
+      top: 0,
+      left:
+        direction === "left"
+          ? Math.min(el.scrollLeft - el.offsetWidth, 0)
+          : Math.max(el.scrollLeft + el.offsetWidth, scrollMax),
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className={classes.gridListRoot} style={style}>
       <ImageList
+        ref={listRef}
         className={classes.gridList}
         cols={1}
         onScroll={debounce((event) => {
@@ -136,7 +152,7 @@ export default function HorizontalScrollList(props) {
             setShowScrollIndicatorLeft(false);
           }
           if (
-            event.target.scrollLeft + event.target.offsetWidth ===
+            Math.ceil(event.target.scrollLeft) + event.target.offsetWidth >=
             event.target.scrollWidth
           ) {
             setShowScrollIndicatorRight(false);
@@ -180,6 +196,8 @@ export default function HorizontalScrollList(props) {
         <HorizontalScrollIndicators
           showLeft={showScrollIndicatorLeft}
           showRight={showScrollIndicatorRight}
+          handleLeftClick={handleIndicatorClick("left")}
+          handleRightClick={handleIndicatorClick("right")}
         />
       )}
     </div>

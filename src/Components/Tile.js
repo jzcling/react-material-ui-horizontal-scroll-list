@@ -1,9 +1,8 @@
 import { ImageListItem, ImageListItemBar, makeStyles } from "@material-ui/core";
-import React from "react";
+import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import { Link } from "react-router-dom";
-import { Fragment } from "react";
 
 const useStyles = makeStyles((theme) => ({
   gridListTile: {

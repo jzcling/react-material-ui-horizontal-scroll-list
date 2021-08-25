@@ -1,6 +1,7 @@
-import { Fade, makeStyles } from "@material-ui/core";
+import { ButtonBase, Fade, makeStyles } from "@material-ui/core";
 import { NavigateBefore, NavigateNext } from "@material-ui/icons";
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   scrollIndicatorLeft: {
@@ -33,20 +34,33 @@ const useStyles = makeStyles((theme) => ({
 
 export default function HorizontalScrollIndicators(props) {
   const classes = useStyles();
-  const { showLeft, showRight } = props;
+  const { showLeft, showRight, handleLeftClick, handleRightClick } = props;
 
   return (
     <Fragment>
       <Fade in={showLeft}>
-        <div className={classes.scrollIndicatorLeft}>
+        <ButtonBase
+          className={classes.scrollIndicatorLeft}
+          onClick={handleLeftClick}
+        >
           <NavigateBefore />
-        </div>
+        </ButtonBase>
       </Fade>
       <Fade in={showRight}>
-        <div className={classes.scrollIndicatorRight}>
+        <ButtonBase
+          className={classes.scrollIndicatorRight}
+          onClick={handleRightClick}
+        >
           <NavigateNext />
-        </div>
+        </ButtonBase>
       </Fade>
     </Fragment>
   );
 }
+
+HorizontalScrollIndicators.propTypes = {
+  showLeft: PropTypes.bool,
+  showRight: PropTypes.bool,
+  handleLeftClick: PropTypes.func,
+  handleRightClick: PropTypes.func,
+};
