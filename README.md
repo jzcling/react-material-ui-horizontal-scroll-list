@@ -8,6 +8,15 @@ A customizable horizontal scroll list using React Material UI components. This c
 npm install --save @jeremyling/react-material-ui-horizontal-scroll-list
 ```
 
+The following packages are peer dependencies that must be install for this package to work.
+
+```
+  @material-ui/core
+  @material-ui/icons
+  lodash
+  react-router-dom
+```
+
 ## Usage Examples
 
 Example with the default component of an image background with a translucent text area.

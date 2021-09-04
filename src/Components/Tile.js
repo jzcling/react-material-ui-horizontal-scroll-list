@@ -1,7 +1,7 @@
 import { ImageListItem, ImageListItemBar, makeStyles } from "@material-ui/core";
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
+import get from "lodash/get";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -145,19 +145,19 @@ const Content = (props) => {
     >
       <img
         src={
-          _.get(item, imageUrlAttribute) ||
+          get(item, imageUrlAttribute) ||
           "https://via.placeholder.com/360/ffffff/808080?text=" +
-            encodeURIComponent(_.get(item, titleAttribute))
+            encodeURIComponent(get(item, titleAttribute))
         }
         alt={
           imageAltAttribute
-            ? _.get(item, imageAltAttribute)
-            : _.get(item, titleAttribute)
+            ? get(item, imageAltAttribute)
+            : get(item, titleAttribute)
         }
         loading="lazy"
       />
       <ImageListItemBar
-        title={_.get(item, titleAttribute)}
+        title={get(item, titleAttribute)}
         classes={{
           root: classes.gridListTileBarRoot,
           title: classes.gridListTileBarTitle,
