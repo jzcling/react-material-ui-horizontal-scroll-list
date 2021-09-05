@@ -1,4 +1,6 @@
-import { debounce, Grid, ImageList, makeStyles } from "@material-ui/core";
+import { Grid, ImageList } from "@material-ui/core";
+import { debounce } from "@material-ui/core/utils";
+import { makeStyles } from "@material-ui/core/styles";
 import React, { useMemo, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import HorizontalScrollIndicators from "./HorizontalScrollIndicators";

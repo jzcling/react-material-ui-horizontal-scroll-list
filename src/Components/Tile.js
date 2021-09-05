@@ -1,4 +1,5 @@
-import { ImageListItem, ImageListItemBar, makeStyles } from "@material-ui/core";
+import { ImageListItem, ImageListItemBar } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import get from "lodash/get";

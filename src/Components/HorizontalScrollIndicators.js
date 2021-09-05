@@ -1,4 +1,5 @@
-import { ButtonBase, Fade, makeStyles } from "@material-ui/core";
+import { ButtonBase, Fade } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import { NavigateBefore, NavigateNext } from "@material-ui/icons";
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
